@@ -12,6 +12,10 @@ html{
     font-size: 62.5%; 
 }
 
+body{
+    line-height: $line-height;
+}
+
 @include mediaWidth($media1700) {
     /* common */
     html {

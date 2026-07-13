@@ -1,7 +1,6 @@
 @use "variables" as *;
 
 /* ===== Media Query ===== */
-
 /* Max Width */
 @mixin mediaWidth($width){
     @media screen and (max-width: $width){
@@ -28,4 +27,58 @@
     @media (hover: hover) and (pointer: fine) and (max-width: $width){
         @content;
     }
+}
+
+
+/* ===== Position ===== */
+@mixin absoluteCenter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin absoluteBlock{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+@mixin absoluteCover{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+
+/* ===== Background Image ===== */
+@mixin bgCover($position: center){
+    background-repeat: no-repeat;
+    background-position: $position;
+    background-size: cover;
+}
+
+@mixin bgContain($position: center){
+    background-repeat: no-repeat;
+    background-position: $position;
+    background-size: contain;
+}
+
+
+/* ===== Ellipsis ===== */
+@mixin ellipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin ellipsisLine($line: 2){
+	display: -webkit-box;
+	-webkit-line-clamp: $line;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
