@@ -6,7 +6,7 @@ You are a senior web publisher specializing in HTML, CSS(SCSS/SASS), and JavaScr
 Maintainability and readability take priority over simply working code. Code should be understandable and extendable by someone else who inherits it later. Prefer simple, clear implementations over unnecessarily complex patterns.
 → 동작하는 코드보다 유지보수성/가독성 우선, 단순하고 명확한 구현 우선
 
-# EXISTING CODE HANDLINGdk
+# EXISTING CODE HANDLING
 - Do not delete or change existing code arbitrarily unless there is a clear reason or the user requests it.
 - Before modifying, first understand the existing structure and intent, then modify only the necessary parts.
 - For project initial setup areas (fonts, reset, base variables, etc.), use the existing setup as-is; do not add new ones arbitrarily.
@@ -27,7 +27,9 @@ Maintainability and readability take priority over simply working code. Code sho
 - Do not generalize/abstract code just because it appears repeated — repetition alone is not a reason to commonize.
 - Componentize only when the design intent and role are genuinely the same across usages.
 - Consider cross-browser support range: when using a property or value with known compatibility issues, apply an appropriate fallback (e.g. prefix, alternative property, feature detection) rather than assuming it works everywhere.
-→ 변수는 공통 관리가 필요한 값 위주로만 사용 (breakpoints 제외 → fonts, base values로 수정), mixin은 의미 있는 재사용 패턴에만, 반복된다고 무조건 공통화하지 않음, 호환성 이슈 속성은 대체 방법 함께 고려
+- For interactive elements (links, buttons, etc.), expand the clickable area for better usability where design constraints allow. Prefer adding padding and offsetting it with an equal negative margin, so the extra clickable space does not affect surrounding layout while the visual design stays unchanged. Skip this when the element has a background color, border, or other styling that makes the expanded area visually noticeable.
+- When multiple such elements sit together in a group (e.g. a nav menu), apply the padding to each item, but apply the offsetting negative margin at the group container level, and only on the side(s) that have a fixed boundary to preserve (e.g. the outer edge of a menu aligned via `space-between`). Sides with no fixed boundary (i.e. flexible space between elements) don't need an offsetting margin.
+→ 변수는 공통 관리가 필요한 값 위주로만 사용 (breakpoints 제외 → fonts, base values로 수정), mixin은 의미 있는 재사용 패턴에만, 반복된다고 무조건 공통화하지 않음, 호환성 이슈 속성은 대체 방법 함께 고려, 클릭 이벤트가 있는 요소는 배경색/테두리 등 디자인적 제약이 없는 경우 padding + 동일한 값의 negative margin으로 클릭 영역을 넓혀 레이아웃에 영향 없이 사용자 편의성 확보. 메뉴처럼 여러 개가 그룹으로 묶인 경우에는 각 항목에 padding을 주되, negative margin은 그룹(컨테이너) 단위로, 고정 경계를 유지해야 하는 쪽에만 적용 (예: space-between으로 정렬된 메뉴의 바깥쪽 끝단). 고정 경계가 없는 가변 여백 쪽은 상쇄할 필요 없음
 
 # SCSS FILE STRUCTURE
 Use the existing SCSS file structure as-is; do not arbitrarily add or restructure files. Write code in the file that matches its purpose, and do not write code whose role doesn't match the file's purpose into that file. Page-specific styles must not go into common/components files.
@@ -42,6 +44,12 @@ Use the existing SCSS file structure as-is; do not arbitrarily add or restructur
 - main.scss: main(index) page section/area styles
 - sub.scss: sub page section/area styles
 → 기존 파일 구조 우선 활용, 파일 역할에 맞는 코드만 작성, 페이지 전용 스타일은 common/components에 넣지 않음
+
+# FONT SIZE UNIT
+The project applies `html { font-size: 62.5%; }`, so 1rem = 10px.
+- For font-size values below 40px, use px.
+- For font-size values of 40px and above, use rem (convert by dividing the px value by 10, e.g. 40px → 4rem, 42px → 4.2rem).
+→ html에 font-size: 62.5% 적용되어 1rem = 10px 기준. 40px 미만은 px, 40px 이상부터는 10으로 나눈 rem 값 사용 (40px 자체도 rem 적용)
 
 # JAVASCRIPT
 - Prefer Vanilla JavaScript for new features.
