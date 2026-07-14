@@ -12,6 +12,7 @@
 /* Color */
 /* Line Height */
 /* Media Query */
+/* Z-Index */
 /* ===== CSS Variables ===== */
 :root {
   /* Viewport */
@@ -83,7 +84,13 @@ html {
 }
 
 body {
+  font-family: "Paperozi", "Noto Sans KR", "Malgun Gothic", "verdana", sans-serif;
+  font-size: 16px;
   line-height: 1.5;
+}
+body * {
+  font-family: inherit;
+  font-size: inherit;
 }
 
 @media screen and (max-width: 1700px) {
@@ -1802,4 +1809,87 @@ button.swiper-pagination-bullet {
 }
 
 /* ===== Common ===== */
+/*  ===== Variables & Mixins ===== */
+/* ===== common ===== */
+body {
+  background: #F5F4ED;
+}
+
+/* inner */
+.w1720 {
+  max-width: calc(1720px + var(--innerGap) * 2);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--innerGap);
+}
+
+.w1600 {
+  max-width: calc(1600px + var(--innerGap) * 2);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--innerGap);
+}
+
+/* Guide Line */
+.guide-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--resizeVH);
+  pointer-events: none;
+}
+.guide-line__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 100%;
+}
+.guide-line__item {
+  width: 1px;
+  height: 100%;
+  background-color: #E5E5E5;
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--headerH);
+  z-index: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 100px;
+  background-color: #F5F4ED;
+  border-bottom: 1px solid #2C2C2C;
+}
+.header__logo {
+  font-family: "Boldonse", "Noto Sans KR", "Malgun Gothic", "verdana", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #2C2C2C;
+}
+.header__gnb ul {
+  display: flex;
+  align-items: center;
+  margin-right: -25px;
+}
+.header__gnb a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--headerH);
+  padding: 0 25px;
+  font-family: "Paperozi", "Noto Sans KR", "Malgun Gothic", "verdana", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2C2C2C;
+}
+.header__gnb .on a {
+  color: #E43C13;
+}
+
 /* ===== Pages ===== */

@@ -1,0 +1,91 @@
+@use "variables" as *;
+
+/* ===== common ===== */
+body{
+    background: $color-bg;
+}
+
+/* inner */
+.w1720{ 
+	max-width: calc(1720px + (var(--innerGap) * 2));
+	width: 100%; 
+	margin: 0 auto; 
+	padding: 0 var(--innerGap); 
+}
+.w1600{ 
+	max-width: calc(1600px + (var(--innerGap) * 2));
+	width: 100%; 
+	margin: 0 auto; 
+	padding: 0 var(--innerGap); 
+}
+
+/* Guide Line */
+.guide-line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--resizeVH);
+    pointer-events: none;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        height: 100%;
+    }
+
+    &__item {
+        width: 1px;
+        height: 100%;
+        background-color: $color-line;
+    }
+}
+
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--headerH);
+    z-index: $z-header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px;
+    background-color: $color-bg;
+    border-bottom: 1px solid $color-text;
+
+    &__logo {
+        font-family: $font-eng;
+        font-size: 20px;
+        font-weight: 400;
+        color: $color-text;
+    }
+
+    &__gnb {
+        ul {
+            display: flex;
+            align-items: center;
+            margin-right: -25px;
+        }
+    
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: var(--headerH);
+            padding: 0 25px;
+            font-family: $font-base;
+            font-size: 20px;
+            font-weight: 600;
+            color: $color-text;
+        }
+    
+        .on a {
+            color: $color-main;
+        }
+    }
+}
